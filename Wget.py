@@ -54,5 +54,5 @@ def wget(self, window_name, the_url):
     output_view.set_scratch(True)
 
 def wget_async(self, window_name, the_url):
-    sublime.status_message('Retrieving page: ' + window_name)
+    sublime.status_message('Retrieving page: ' + window_name + '...')
     sublime.set_timeout_async(lambda: wget(self,window_name,the_url),0)
