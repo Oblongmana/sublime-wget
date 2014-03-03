@@ -24,16 +24,7 @@ class WgetMySitesCommand(sublime_plugin.WindowCommand):
         
 
     def run_wget_my_sites(self,sites_index):
-        page_html = urllib.request.urlopen(self.sites[sites_index]['address']).read().decode('utf-8')
-        h = html2text.html2text.HTML2Text()
-        page_md = h.handle(page_html)
-
-        output_view = self.window.new_file();
-        self.window.focus_view(output_view)
-        output_view.run_command("append", {"characters": page_md})
-        output_view.set_name('Wget: ' + self.sites[sites_index]['name'])
-        output_view.set_read_only(True)
-        output_view.set_scratch(True)
+        wget(self, self.sites[sites_index]['name'],self.sites[sites_index]['address'])
 
 
 class WgetInputCommand(sublime_plugin.WindowCommand):
@@ -42,18 +33,22 @@ class WgetInputCommand(sublime_plugin.WindowCommand):
         self.window.show_input_panel("URL to retrieve", "", self.run_wget_input,None,None)
 
     def run_wget_input(self,the_input):
-        if the_input.startswith('http://') or the_input.startswith('https://'):
-            pass
-        else:
-            the_input = 'http://' + the_input
+        wget(self,the_input,the_input)
 
-        page_html = urllib.request.urlopen(the_input).read().decode('utf-8')
-        h = html2text.html2text.HTML2Text()
-        page_md = h.handle(page_html)
 
-        output_view = self.window.new_file();
-        self.window.focus_view(output_view)
-        output_view.run_command("append", {"characters": page_md})
-        output_view.set_name('Wget: ' + the_input)
-        output_view.set_read_only(True)
-        output_view.set_scratch(True)
+def wget(self, window_name, the_url):
+    if the_url.startswith('http://') or the_url.startswith('https://'):
+        pass
+    else:
+        the_url = 'http://' + the_url
+
+    page_html = urllib.request.urlopen(the_url).read().decode('utf-8')
+    h = html2text.html2text.HTML2Text()
+    page_md = h.handle(page_html)
+
+    output_view = self.window.new_file();
+    self.window.focus_view(output_view)
+    output_view.run_command("append", {"characters": page_md})
+    output_view.set_name('Wget: ' + window_name)
+    output_view.set_read_only(True)
+    output_view.set_scratch(True)
