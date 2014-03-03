@@ -24,7 +24,8 @@ Wait for a bit while SublimeWget retrieves the page, and it will open in a new t
 
 Navigate to *Preferences* > *Package Settings* > *SublimeWget* > *Settings - User*
 
-In this file, add the following, and customise your `sites` list as desired
+In this file, add the following, and customise your `sites` list as desired (obviously, uncomment the site object to get started)
+
 ```json
 {
   "sites": [
