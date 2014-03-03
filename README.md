@@ -9,7 +9,8 @@ A plugin for Sublime Text 3 that retrieves the contents of a URL for you, runs t
 
 ## Usage 
 
-There are two basic use-cases
+There are two basic use-cases:
+
 1. Ad-hoc retrieval of web pages
 2. Retrieval of web pages from a user-defined list
 
