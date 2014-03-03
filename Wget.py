@@ -24,7 +24,7 @@ class WgetMySitesCommand(sublime_plugin.WindowCommand):
         
 
     def run_wget_my_sites(self,sites_index):
-        wget(self, self.sites[sites_index]['name'],self.sites[sites_index]['address'])
+        wget_async(self, self.sites[sites_index]['name'],self.sites[sites_index]['address'])
 
 
 class WgetInputCommand(sublime_plugin.WindowCommand):
@@ -33,7 +33,7 @@ class WgetInputCommand(sublime_plugin.WindowCommand):
         self.window.show_input_panel("URL to retrieve", "", self.run_wget_input,None,None)
 
     def run_wget_input(self,the_input):
-        wget(self,the_input,the_input)
+        wget_async(self,the_input,the_input)
 
 
 def wget(self, window_name, the_url):
@@ -52,3 +52,7 @@ def wget(self, window_name, the_url):
     output_view.set_name('Wget: ' + window_name)
     output_view.set_read_only(True)
     output_view.set_scratch(True)
+
+def wget_async(self, window_name, the_url):
+    sublime.status_message('Retrieving page: ' + window_name)
+    sublime.set_timeout_async(lambda: wget(self,window_name,the_url),0)
