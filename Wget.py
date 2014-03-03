@@ -17,8 +17,8 @@ import html2text.html2text
 class WgetMySitesCommand(sublime_plugin.WindowCommand):
 
     def run(self):
-        self.settings_cache = sublime.load_settings("SublimeWget.sublime-settings")
-        self.sites = self.settings_cache.get("sites",None)
+        settings = sublime.load_settings("SublimeWget.sublime-settings")
+        self.sites = settings.get("sites",None)
         text_sites_for_selection = [site['name'] + ': ' + site['address'] for site in self.sites]
         self.window.show_quick_panel(text_sites_for_selection, self.run_wget_my_sites)
         
