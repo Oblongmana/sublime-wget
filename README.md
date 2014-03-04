@@ -5,7 +5,7 @@ A plugin for Sublime Text 3 that retrieves the contents of a URL for you, runs t
 ## Installation
 
 1. **Recommended:** Download [Package Control](http://wbond.net/sublime_packages/package_control) and install using the *Package Control: Install Package* command (search for *Wget*)
-2. **Not recommended:** Simply download this repo and save it to a *Wget* directory inside your Sublime Packages/ directory. You will not receive automatic updates as your would following option 1
+2. **Not recommended:** Simply download this repo and save it to a *Wget* directory inside your Sublime Packages/ directory. You will not receive automatic updates as you would following option 1
 
 ## Usage 
 
@@ -18,7 +18,7 @@ There are two basic use-cases:
 
 SublimeWget adds a new command to your palette: *'Wget'*. Simply select this command, type in the url you want to access and press enter. Don't worry about adding 'http://' at the start, SublimeWget will add it if it's missing. 'www' is not required either.
 
-Wait for a bit while SublimeWget retrieves the page, and it will open in a new tab in Sublime.
+SublimeWget will retrieve the page asynchronously, and will open the page in a new tab in Sublime when done.
 
 ### 2. Retrieval of web pages from a user-defined list
 
@@ -39,7 +39,7 @@ In this file, add the following, and customise your `sites` list as desired (obv
 
 SublimeWget has added a new command to your palette to access this list of sites quickly: *'Wget: My Sites'*. Choose this command from the command palette and SublimeWget will present a list of your sites to choose from.
 
-Wait for a bit while SublimeWget retrieves the page, and it will open in a new tab in Sublime.
+SublimeWget will retrieve the page asynchronously, and will open the page in a new tab in Sublime when done.
 
 ## License
 
