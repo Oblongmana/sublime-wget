@@ -1,5 +1,5 @@
 """SublimeWget: In Sublime Text 3, retrieve a web page, turn it into markdown, and display in Sublime"""
-__version__ = "1.0.0"
+__version__ = "1.1.1"
 __author__ = "James Hill (oblongmana@gmail.com)"
 __copyright__ = "SublimeWget: (C) 2014 James Hill. GNU GPL 3."
 __credits__ = ["html2text.py: (C) 2004-2008 Aaron Swartz. GNU GPL 3."]
@@ -24,7 +24,8 @@ class WgetMySitesCommand(sublime_plugin.WindowCommand):
         
 
     def run_wget_my_sites(self,sites_index):
-        wget_async(self, self.sites[sites_index]['name'],self.sites[sites_index]['address'])
+        if(sites_index != -1):
+            wget_async(self, self.sites[sites_index]['name'],self.sites[sites_index]['address'])
 
 
 class WgetInputCommand(sublime_plugin.WindowCommand):
